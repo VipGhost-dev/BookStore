@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/lied0/AndroidStudioProjects/BookStore/app/src/main/res/drawable/btn_drawable.xml" value="0.3835" />
+        <entry key="..\:/Users/lied0/AndroidStudioProjects/BookStore/app/src/main/res/layout/activity_contactspage.xml" value="0.18642350557244175" />
+        <entry key="..\:/Users/lied0/AndroidStudioProjects/BookStore/app/src/main/res/layout/activity_main.xml" value="0.35280797101449274" />
+        <entry key="..\:/Users/lied0/AndroidStudioProjects/BookStore/app/src/main/res/layout/adminpadge.xml" value="0.33" />
+        <entry key="..\:/Users/lied0/AndroidStudioProjects/BookStore/app/src/main/res/layout/usercreate.xml" value="0.38333333333333336" />
+        <entry key="..\:/Users/lied0/AndroidStudioProjects/BookStore/app/src/main/res/layout/userpage.xml" value="0.3692708333333333" />
+        <entry key="..\:/Users/lied0/AndroidStudioProjects/BookStore/app/src/main/res/layout/userspage.xml" value="0.38333333333333336" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
