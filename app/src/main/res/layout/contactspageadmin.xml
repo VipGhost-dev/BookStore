@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".userspage">
+    tools:context=".contactspageadmin">
 
     <TableLayout
         android:id="@+id/dbOutput"
@@ -32,9 +32,11 @@
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"/>
 
-        </TableRow>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
     </TableLayout>
 
     <LinearLayout
@@ -80,5 +82,4 @@
             android:textSize="20sp"
             />
     </LinearLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

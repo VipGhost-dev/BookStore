@@ -25,8 +25,10 @@ public class usercreate extends AppCompatActivity implements View.OnClickListene
 
         btncreate = findViewById(R.id.btncreate);
         btncreate.setOnClickListener(this);
+
         dbLogin = findViewById(R.id.dbLogin);
         dbPassword = findViewById(R.id.dbPassword);
+
         db = new DB(this);
         database =  db.getWritableDatabase();
         dbLogin.setOnFocusChangeListener((v, hasFocus) -> {

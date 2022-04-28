@@ -10,6 +10,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BookStore">
         <activity
+            android:name=".bookcreate"
+            android:exported="false" />
+        <activity
+            android:name=".contactcreate"
+            android:exported="false" />
+        <activity
+            android:name=".contactspageadmin"
+            android:exported="false" />
+        <activity
             android:name=".usercreate"
             android:exported="false" />
         <activity

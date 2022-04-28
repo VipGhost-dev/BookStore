@@ -34,7 +34,7 @@ public class adminpadge extends AppCompatActivity implements View.OnClickListene
                 startActivity(new Intent(this, userspage.class));
                 break;
             case R.id.contacts:
-                startActivity(new Intent(this, contactspage.class));
+                startActivity(new Intent(this, contactspageadmin.class));
                 break;
         }
     }

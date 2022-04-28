@@ -2,11 +2,11 @@ package com.example.bookstore;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
-import android.os.Bundle;
 import android.content.ContentValues;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -15,24 +15,23 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
-public class userspage extends AppCompatActivity implements View.OnClickListener {
+public class contactspageadmin extends AppCompatActivity implements View.OnClickListener {
 
-    Button dbAdd,  dbClear , btnback;
+    Button dbAdd,  dbClear ,btnback;
 
     DB db;
     SQLiteDatabase database;
     ContentValues contentValues;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.userspage);
+        setContentView(R.layout.contactspageadmin);
 
         dbAdd = findViewById(R.id.btnadd);
         dbAdd.setOnClickListener(this);
         dbClear = findViewById(R.id.btnclear);
         dbClear.setOnClickListener(this);
-        btnback =findViewById(R.id.btnback);
+        btnback = findViewById(R.id.btnback);
         btnback.setOnClickListener(this);
 
         db = new DB(this);
@@ -41,11 +40,12 @@ public class userspage extends AppCompatActivity implements View.OnClickListener
     }
 
     private void UpdateTable() {
-        Cursor cursor = database.query(DB.TABLE_USERS, null, null, null, null, null, null);
+        Cursor cursor = database.query(DB.TABLE_CONTACTS, null, null, null, null, null, null);
         if (cursor.moveToFirst()) {
             int idIndex = cursor.getColumnIndex(DB.KEY_ID);
-            int loginIndex = cursor.getColumnIndex(DB.KEY_LOGIN);
-            int passwordIndex = cursor.getColumnIndex(DB.KEY_PASSWORD);
+            int adreesIndex = cursor.getColumnIndex(DB.KEY_ADRESS);
+            int phoneIndex = cursor.getColumnIndex(DB.KEY_PHONE);
+            int timeIndex = cursor.getColumnIndex(DB.KEY_TIME);
             TableLayout dbOutput = findViewById(R.id.dbOutput);
             dbOutput.removeAllViews();
             do {
@@ -59,17 +59,23 @@ public class userspage extends AppCompatActivity implements View.OnClickListener
                 outputID.setText(cursor.getString(idIndex));
                 dbOutputRow.addView(outputID);
 
-                TextView outputLogin = new TextView(this);
+                TextView outputAdress = new TextView(this);
                 params.weight= 3.0f;
-                outputLogin.setLayoutParams(params);
-                outputLogin.setText(cursor.getString(loginIndex));
-                dbOutputRow.addView(outputLogin);
+                outputAdress.setLayoutParams(params);
+                outputAdress.setText(cursor.getString(adreesIndex));
+                dbOutputRow.addView(outputAdress);
 
-                TextView outputPassword= new TextView(this);
+                TextView outputPhone= new TextView(this);
                 params.weight= 3.0f;
-                outputPassword.setLayoutParams(params);
-                outputPassword.setText(cursor.getString(passwordIndex));
-                dbOutputRow.addView(outputPassword);
+                outputPhone.setLayoutParams(params);
+                outputPhone.setText(cursor.getString(phoneIndex));
+                dbOutputRow.addView(outputPhone);
+
+                TextView outputTime= new TextView(this);
+                params.weight= 3.0f;
+                outputTime.setLayoutParams(params);
+                outputTime.setText(cursor.getString(timeIndex));
+                dbOutputRow.addView(outputTime);
 
                 Button deleteBtn = new Button(this);
                 deleteBtn.setOnClickListener(this);
@@ -91,44 +97,46 @@ public class userspage extends AppCompatActivity implements View.OnClickListener
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btnadd:
-                startActivity(new Intent(this, usercreate.class));
+                startActivity(new Intent(this, contactcreate.class));
                 break;
 
             case R.id.btnclear:
-                database.delete(DB.TABLE_USERS, null, null);
+                database.delete(DB.TABLE_CONTACTS, null, null);
                 TableLayout dbOutput = findViewById(R.id.dbOutput);
                 dbOutput.removeAllViews();
                 UpdateTable();
                 break;
             case R.id.btnback:
-                    startActivity(new Intent(this, adminpadge.class));
-                    break;
+                startActivity(new Intent(this, adminpadge.class));
+                break;
             default:
                 View outputDBRow = (View) v.getParent();
                 ViewGroup outputDb = (ViewGroup)  outputDBRow.getParent();
                 outputDb.removeView(outputDBRow);
                 outputDb.invalidate();
 
-                database.delete(DB.TABLE_USERS, DB.KEY_ID +" = ?", new String[]{String.valueOf(v.getId())});
+                database.delete(DB.TABLE_CONTACTS, DB.KEY_ID +" = ?", new String[]{String.valueOf(v.getId())});
                 contentValues = new ContentValues();
-                Cursor cursorUpdater = database.query(DB.TABLE_USERS, null, null, null, null, null, null);
+                Cursor cursorUpdater = database.query(DB.TABLE_CONTACTS, null, null, null, null, null, null);
                 if (cursorUpdater.moveToFirst()) {
                     int idIndex = cursorUpdater.getColumnIndex(DB.KEY_ID);
-                    int loginIndex = cursorUpdater.getColumnIndex(DB.KEY_LOGIN);
-                    int passwordIndex = cursorUpdater.getColumnIndex(DB.KEY_PASSWORD);
+                    int adressIndex = cursorUpdater.getColumnIndex(DB.KEY_ADRESS);
+                    int phoneIndex = cursorUpdater.getColumnIndex(DB.KEY_PHONE);
+                    int timeIndex = cursorUpdater.getColumnIndex(DB.KEY_TIME);
                     int realID=1;
                     do {
                         if (cursorUpdater.getInt(idIndex)>realID)
                         {
                             contentValues.put(DB.KEY_ID, realID);
-                            contentValues.put(DB.KEY_LOGIN, cursorUpdater.getString(loginIndex));
-                            contentValues.put(DB.KEY_PASSWORD, cursorUpdater.getString(passwordIndex));
-                            database.replace(DB.TABLE_USERS, null, contentValues);
+                            contentValues.put(DB.KEY_ADRESS, cursorUpdater.getString(adressIndex));
+                            contentValues.put(DB.KEY_PHONE, cursorUpdater.getString(phoneIndex));
+                            contentValues.put(DB.KEY_TIME, cursorUpdater.getString(timeIndex));
+                            database.replace(DB.TABLE_CONTACTS, null, contentValues);
                         }
                         realID++;
                     } while (cursorUpdater.moveToNext());
                     if (cursorUpdater.moveToLast()){
-                        database.delete(DB.TABLE_USERS,DB.KEY_ID + " = ?", new String[]{cursorUpdater.getString(idIndex)});
+                        database.delete(DB.TABLE_CONTACTS,DB.KEY_ID + " = ?", new String[]{cursorUpdater.getString(idIndex)});
                     }
                     UpdateTable();
                 }

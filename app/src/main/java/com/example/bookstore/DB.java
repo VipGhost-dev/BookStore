@@ -14,7 +14,6 @@ public class DB  extends SQLiteOpenHelper{
     public static final String KEY_ID = "_id";
     public static final String KEY_NAME = "name";
     public static final String KEY_AUTHOR = "author";
-    public static final String KEY_DESCRIPTION = "description";
     public static final String KEY_PRICE = "price";
 
     public static final String KEY_ID1 = "_id";
@@ -34,8 +33,7 @@ public class DB  extends SQLiteOpenHelper{
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("create table " + TABLE_BOOKS + "(" + KEY_ID
                 + " integer primary key," + KEY_NAME + " text,"
-                + KEY_AUTHOR + " text," + KEY_DESCRIPTION + " text,"
-                + KEY_PRICE + " text"+")");
+                + KEY_AUTHOR + " text," + KEY_PRICE + " text"+")");
         db.execSQL("create table " + TABLE_USERS + "(" + KEY_ID1
                 + " integer primary key," + KEY_LOGIN + " text,"
                 + KEY_PASSWORD + " text"+")");
