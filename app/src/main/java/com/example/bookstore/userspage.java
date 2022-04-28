@@ -43,7 +43,7 @@ public class userspage extends AppCompatActivity implements View.OnClickListener
     private void UpdateTable() {
         Cursor cursor = database.query(DB.TABLE_USERS, null, null, null, null, null, null);
         if (cursor.moveToFirst()) {
-            int idIndex = cursor.getColumnIndex(DB.KEY_ID);
+            int idIndex = cursor.getColumnIndex(DB.KEY_ID1);
             int loginIndex = cursor.getColumnIndex(DB.KEY_LOGIN);
             int passwordIndex = cursor.getColumnIndex(DB.KEY_PASSWORD);
             TableLayout dbOutput = findViewById(R.id.dbOutput);
@@ -109,18 +109,18 @@ public class userspage extends AppCompatActivity implements View.OnClickListener
                 outputDb.removeView(outputDBRow);
                 outputDb.invalidate();
 
-                database.delete(DB.TABLE_USERS, DB.KEY_ID +" = ?", new String[]{String.valueOf(v.getId())});
+                database.delete(DB.TABLE_USERS, DB.KEY_ID1 +" = ?", new String[]{String.valueOf(v.getId())});
                 contentValues = new ContentValues();
                 Cursor cursorUpdater = database.query(DB.TABLE_USERS, null, null, null, null, null, null);
                 if (cursorUpdater.moveToFirst()) {
-                    int idIndex = cursorUpdater.getColumnIndex(DB.KEY_ID);
+                    int idIndex = cursorUpdater.getColumnIndex(DB.KEY_ID1);
                     int loginIndex = cursorUpdater.getColumnIndex(DB.KEY_LOGIN);
                     int passwordIndex = cursorUpdater.getColumnIndex(DB.KEY_PASSWORD);
                     int realID=1;
                     do {
                         if (cursorUpdater.getInt(idIndex)>realID)
                         {
-                            contentValues.put(DB.KEY_ID, realID);
+                            contentValues.put(DB.KEY_ID1, realID);
                             contentValues.put(DB.KEY_LOGIN, cursorUpdater.getString(loginIndex));
                             contentValues.put(DB.KEY_PASSWORD, cursorUpdater.getString(passwordIndex));
                             database.replace(DB.TABLE_USERS, null, contentValues);
@@ -128,7 +128,7 @@ public class userspage extends AppCompatActivity implements View.OnClickListener
                         realID++;
                     } while (cursorUpdater.moveToNext());
                     if (cursorUpdater.moveToLast()){
-                        database.delete(DB.TABLE_USERS,DB.KEY_ID + " = ?", new String[]{cursorUpdater.getString(idIndex)});
+                        database.delete(DB.TABLE_USERS,DB.KEY_ID1 + " = ?", new String[]{cursorUpdater.getString(idIndex)});
                     }
                     UpdateTable();
                 }

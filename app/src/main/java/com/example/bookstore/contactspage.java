@@ -39,7 +39,7 @@ public class contactspage extends AppCompatActivity implements View.OnClickListe
     private void UpdateTable() {
         Cursor cursor = database.query(DB.TABLE_CONTACTS, null, null, null, null, null, null);
         if (cursor.moveToFirst()) {
-            int idIndex = cursor.getColumnIndex(DB.KEY_ID);
+            int idIndex = cursor.getColumnIndex(DB.KEY_ID2);
             int adreesIndex = cursor.getColumnIndex(DB.KEY_ADRESS);
             int phoneIndex = cursor.getColumnIndex(DB.KEY_PHONE);
             int timeIndex = cursor.getColumnIndex(DB.KEY_TIME);
@@ -93,11 +93,11 @@ public class contactspage extends AppCompatActivity implements View.OnClickListe
                 outputDb.removeView(outputDBRow);
                 outputDb.invalidate();
 
-                database.delete(DB.TABLE_CONTACTS, DB.KEY_ID +" = ?", new String[]{String.valueOf(v.getId())});
+                database.delete(DB.TABLE_CONTACTS, DB.KEY_ID2 +" = ?", new String[]{String.valueOf(v.getId())});
                 contentValues = new ContentValues();
                 Cursor cursorUpdater = database.query(DB.TABLE_CONTACTS, null, null, null, null, null, null);
                 if (cursorUpdater.moveToFirst()) {
-                    int idIndex = cursorUpdater.getColumnIndex(DB.KEY_ID);
+                    int idIndex = cursorUpdater.getColumnIndex(DB.KEY_ID2);
                     int adressIndex = cursorUpdater.getColumnIndex(DB.KEY_ADRESS);
                     int phoneIndex = cursorUpdater.getColumnIndex(DB.KEY_PHONE);
                     int timeIndex = cursorUpdater.getColumnIndex(DB.KEY_TIME);
@@ -105,7 +105,7 @@ public class contactspage extends AppCompatActivity implements View.OnClickListe
                     do {
                         if (cursorUpdater.getInt(idIndex)>realID)
                         {
-                            contentValues.put(DB.KEY_ID, realID);
+                            contentValues.put(DB.KEY_ID2, realID);
                             contentValues.put(DB.KEY_ADRESS, cursorUpdater.getString(adressIndex));
                             contentValues.put(DB.KEY_PHONE, cursorUpdater.getString(phoneIndex));
                             contentValues.put(DB.KEY_TIME, cursorUpdater.getString(timeIndex));
@@ -114,7 +114,7 @@ public class contactspage extends AppCompatActivity implements View.OnClickListe
                         realID++;
                     } while (cursorUpdater.moveToNext());
                     if (cursorUpdater.moveToLast()){
-                        database.delete(DB.TABLE_CONTACTS,DB.KEY_ID + " = ?", new String[]{cursorUpdater.getString(idIndex)});
+                        database.delete(DB.TABLE_CONTACTS,DB.KEY_ID2 + " = ?", new String[]{cursorUpdater.getString(idIndex)});
                     }
                     UpdateTable();
                 }

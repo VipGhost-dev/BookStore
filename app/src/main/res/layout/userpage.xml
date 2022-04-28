@@ -14,7 +14,7 @@
         android:text="Книги"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/menu_admin"
         app:layout_constraintBottom_toTopOf="@id/contacts"
         android:background="@drawable/btn_drawable"
         android:backgroundTintMode="add"
@@ -25,12 +25,25 @@
         android:id="@+id/contacts"
         android:layout_width="340dp"
         android:layout_height="55dp"
-        android:layout_marginTop="24dp"
         android:text="Контакты"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/books"
-        app:layout_constraintBottom_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/changepassword"
+        android:background="@drawable/btn_drawable"
+        android:backgroundTintMode="add"
+        android:textSize="20sp"
+        android:textColor="@color/ginger"/>
+
+    <android.widget.Button
+        android:id="@+id/changepassword"
+        android:layout_width="340dp"
+        android:layout_height="55dp"
+        android:text="Сменить пароль"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/contacts"
+        app:layout_constraintBottom_toTopOf="@id/imageView"
         android:background="@drawable/btn_drawable"
         android:backgroundTintMode="add"
         android:textSize="20sp"
@@ -57,6 +70,6 @@
         tools:layout_editor_absoluteY="454dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="parent"
-        app:layout_constraintBottom_toBottomOf="@id/contacts"/>
+        app:layout_constraintTop_toBottomOf="@id/changepassword"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

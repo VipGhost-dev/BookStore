@@ -96,9 +96,8 @@ public class bookspage extends AppCompatActivity implements View.OnClickListener
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btnadd:
-                startActivity(new Intent(this, bookcreate.class));
+                startActivity(new Intent(this, Bookcreate.class));
                 break;
-
             case R.id.btnback:
                 startActivity(new Intent(this, UserpageActivity.class));
                 break;

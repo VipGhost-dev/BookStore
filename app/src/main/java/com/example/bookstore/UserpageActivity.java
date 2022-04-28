@@ -9,17 +9,19 @@ import android.widget.Button;
 
 public class UserpageActivity extends AppCompatActivity implements View.OnClickListener {
 
-    Button books, contacts;
+    Button books, contacts, cp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.userpage);
 
-        books = (Button) findViewById(R.id.books);
+        books = findViewById(R.id.books);
         books.setOnClickListener(this);
-        contacts = (Button) findViewById(R.id.contacts);
+        contacts = findViewById(R.id.contacts);
         contacts.setOnClickListener(this);
+        cp = findViewById(R.id.changepassword);
+        cp.setOnClickListener(this);
     }
 
     @Override
@@ -30,6 +32,9 @@ public class UserpageActivity extends AppCompatActivity implements View.OnClickL
                 break;
             case R.id.contacts:
                 startActivity(new Intent(this, contactspage.class));
+                break;
+            case R.id.changepassword:
+                startActivity(new Intent(this, Changepage.class));
                 break;
         }
     }

@@ -28,7 +28,7 @@ public class adminpadge extends AppCompatActivity implements View.OnClickListene
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.books:
-                startActivity(new Intent(this, bookspage.class));
+                startActivity(new Intent(this, bookspageadmin.class));
                 break;
             case R.id.users:
                 startActivity(new Intent(this, userspage.class));

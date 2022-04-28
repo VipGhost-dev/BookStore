@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.bookstore">
+    package="com.example.bookstore" >
 
     <application
         android:allowBackup="true"
@@ -8,9 +8,18 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.BookStore">
+        android:theme="@style/Theme.BookStore" >
         <activity
-            android:name=".bookcreate"
+            android:name=".Changepage"
+            android:exported="false" />
+        <activity
+            android:name=".Bookcreateadmin"
+            android:exported="false" />
+        <activity
+            android:name=".bookspageadmin"
+            android:exported="false" />
+        <activity
+            android:name=".Bookcreate"
             android:exported="false" />
         <activity
             android:name=".contactcreate"
@@ -38,7 +47,7 @@
             android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="true">
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

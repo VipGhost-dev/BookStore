@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     String adminUser = "admin";
     String adminPassword = "admin";
 
+    public static String user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,6 +70,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             break;
                         }
                         if(login.getText().toString().equals(loginCursor.getString(usernameIndex)) && password.getText().toString().equals(loginCursor.getString(passwordIndex))){
+                            user = loginCursor.getString(usernameIndex);
                           startActivity(new Intent(this, UserpageActivity.class));
                             logged = true;
                             break;
