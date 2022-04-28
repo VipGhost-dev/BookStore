@@ -28,6 +28,9 @@ public class contactspage extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contactspage);
 
+        btnback = findViewById(R.id.btnback);
+        btnback.setOnClickListener(this);
+
         db = new DB(this);
         database =  db.getWritableDatabase();
         UpdateTable();

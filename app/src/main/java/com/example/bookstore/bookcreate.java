@@ -29,7 +29,7 @@ public class bookcreate extends AppCompatActivity implements View.OnClickListene
 
         dbName = findViewById(R.id.dbName);
         dbAuthor = findViewById(R.id.dbPhone);
-        dbPrice = findViewById(R.id.dbTime);
+        dbPrice = findViewById(R.id.dbPrice);
 
         db = new DB(this);
         database =  db.getWritableDatabase();
